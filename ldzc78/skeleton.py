@@ -229,7 +229,7 @@ print("The codes and tariffs have been read from 'alg_codes_and_tariffs.txt':")
 ############ THE RESERVED STRING VARIABLE 'my_user_name' SHOULD BE SET AT YOUR USER-NAME, E.G., "abcd12"
 ############
 
-my_user_name = "abcd12"
+my_user_name = "ldzc78"
 
 ############
 ############ YOU CAN SUPPLY, IF YOU WANT, YOUR FULL NAME. THIS IS NOT USED AT ALL BUT SERVES AS
@@ -240,8 +240,8 @@ my_user_name = "abcd12"
 ############ ARE SET AT SOMETHING).
 ############
 
-my_first_name = ""
-my_last_name = ""
+my_first_name = "James"
+my_last_name = "Dixon"
 
 ############
 ############ YOU NEED TO SUPPLY THE ALGORITHM CODE IN THE RESERVED STRING VARIABLE 'algorithm_code'

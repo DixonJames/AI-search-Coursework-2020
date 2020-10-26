@@ -133,7 +133,7 @@ tour_files_to_submit = [["AlgA_AISearchfile012.txt", "AlgA_AISearchfile017.txt",
                         ["AlgB_AISearchfile012.txt", "AlgB_AISearchfile017.txt", "AlgB_AISearchfile021.txt", "AlgB_AISearchfile026.txt", "AlgB_AISearchfile042.txt",
                          "AlgB_AISearchfile048.txt", "AlgB_AISearchfile058.txt", "AlgB_AISearchfile175.txt", "AlgB_AISearchfile180.txt", "AlgB_AISearchfile535.txt"]]
 additional_items_to_submit = ["AISearchProforma.pdf"]
-city_file_folder = "city-files"
+city_file_folder = "../city-files"
 alg_codes_file = "alg_codes_and_tariffs.txt"
 
 def integerize(the_string):
