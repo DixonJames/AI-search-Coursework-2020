@@ -1,0 +1,25 @@
+HC, hilling climbing search, 4,
+BG, basic greedy search, 4,
+2O, two-opt algorithm, 4,
+US, uninformed search, 5,
+SA, simulated annealing, 5,
+MF, multi-fragment search, 5,
+3O, three-opt algorithm, 5,
+4O, four-opt algorithm, 5,
+5O, five-opt algorithm, 5,
+BF, brute-force search, 6,
+ID, iterative deepening search, 6,
+BH, greedy best-first search, 6,
+GA, genetic algorithm, 6, #easy to inprove from the basic implimentation
+AS, A* search, 7, # may be worth it becaise of focus on in lectures. (advanced version would be a better hearistic)
+IA, iterative deepening A* search, 8, #more memory efficient
+AC, ant colony optimization, 9,
+    1. touring ant collony optimisation problem
+    2. orthongonal search embedded ALG
+    3. recursive ant collony optimisation
+    4. look at the wikipedia page idiot
+    5.
+PS, particle swarm optimization, 10,
+CA, Christofides algorithm, 10,
+LK, Lin-Kernighan, 10, #look at this, similar to  two three and four opt
+WF, water-flow algorithm, 10
