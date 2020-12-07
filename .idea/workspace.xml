@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="" />
+    <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +37,7 @@
       <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.patric calss fun">
+  <component name="RunManager" selected="Python.particle_swarm_basic">
     <configuration name="NOTSUBMIT neighrest neighbor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -77,7 +80,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="genetic_basic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="particle_swarm_basic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -89,7 +92,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/genetic_basic.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.particle_swarm_basic" />
         <item itemvalue="Python.patric calss fun" />
         <item itemvalue="Python.ant_basic" />
         <item itemvalue="Python.NOTSUBMIT neighrest neighbor" />
         <item itemvalue="Python.skeleton" />
-        <item itemvalue="Python.genetic_basic" />
       </list>
     </recent_temporary>
   </component>
@@ -161,73 +164,16 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="496" y="219" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603734132954">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="496" y="219" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1603734132954" />
-    <state x="689" y="240" key="#xdebugger.evaluate" timestamp="1606170758059">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="689" y="240" key="#xdebugger.evaluate/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606170758059" />
-    <state x="524" y="120" key="#xdebugger.evaluate/0.0.1536.834@0.0.1536.834" timestamp="1606153443589" />
-    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1605355833061">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1605197063676" />
-    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1605355833061" />
-    <state width="1515" height="125" key="GridCell.Tab.0.bottom" timestamp="1606409920090">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="125" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606409920090" />
-    <state width="1515" height="125" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606401869381" />
-    <state width="1515" height="125" key="GridCell.Tab.0.center" timestamp="1606409920089">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.0.center/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="125" key="GridCell.Tab.0.center/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606409920089" />
-    <state width="1515" height="125" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1606401869380" />
-    <state width="1515" height="125" key="GridCell.Tab.0.left" timestamp="1606409920089">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.0.left/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="125" key="GridCell.Tab.0.left/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606409920089" />
-    <state width="1515" height="125" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1606401869380" />
-    <state width="1515" height="125" key="GridCell.Tab.0.right" timestamp="1606409920090">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.0.right/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="125" key="GridCell.Tab.0.right/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606409920090" />
-    <state width="1515" height="125" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1606401869380" />
-    <state width="1515" height="164" key="GridCell.Tab.1.bottom" timestamp="1606172155240">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.1.bottom/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="164" key="GridCell.Tab.1.bottom/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606172155240" />
-    <state width="1515" height="164" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1606153488953" />
-    <state width="1515" height="164" key="GridCell.Tab.1.center" timestamp="1606172155240">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.1.center/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="164" key="GridCell.Tab.1.center/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606172155240" />
-    <state width="1515" height="164" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1606153488952" />
-    <state width="1515" height="164" key="GridCell.Tab.1.left" timestamp="1606172155240">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.1.left/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="164" key="GridCell.Tab.1.left/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606172155240" />
-    <state width="1515" height="164" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1606153488952" />
-    <state width="1515" height="164" key="GridCell.Tab.1.right" timestamp="1606172155240">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1515" height="98" key="GridCell.Tab.1.right/0.0.1536.834/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1605091019711" />
-    <state width="1515" height="164" key="GridCell.Tab.1.right/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1606172155240" />
-    <state width="1515" height="164" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1606153488952" />
-    <state width="775" height="424" key="XDebugger.FullValuePopup" timestamp="1604934750005">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="775" height="424" key="XDebugger.FullValuePopup/0.0.1536.834/-1920.0.1920.1080@0.0.1536.834" timestamp="1604934750005" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
