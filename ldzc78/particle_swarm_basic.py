@@ -96,23 +96,34 @@ class swarm:
         return random.shuffle([i for i in range(len(self.weights[0])-1)])
 
     def applyVector(self, tour, vector):
-        for swap in vector:
-            a, b = tour.index(tour[swap[0]]), tour.index(tour[swap[1]])
-            tour[b], tour[a] = tour[a], tour[b]
-        return tour
+        try:
+            for swap in vector:
+                    a, b = tour.index(tour[swap[0]]), tour.index(tour[swap[1]])
+                    tour[b], tour[a] = tour[a], tour[b]
+            return tour
+        except:
+            print('swap failed')
+
+
+
 
     def randomZeroOneVector(self, length):
         vec = []
         for i in range(length):
-            vec.append(random.randrange(0.1, 0.9, 0.1))
+            vec.append(random.randrange(1, 9, 1)/10)
         return vec
 
     def threshholdVector(self, constlist, vector, threshold):
         result = []
-        for i in range(len(constlist)):
+        for i in range(len(constlist)-1):
             if constlist[i] >= threshold:
                 result.append(vector[i])
         return result
+
+    def applyConstVector(self, vector, const):
+        for i in range(len(vector)-1):
+            vector[i] *= const
+        return vector
 
 
 
@@ -129,6 +140,7 @@ class swarm:
         time_counter = 0
         while time_counter < iterations:
             for current_particle in self.all_particles:
+                print(current_particle)
 
                 neighbor_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)].index(
                     min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)]))
@@ -137,23 +149,28 @@ class swarm:
                 current_particle.current_tour = self.applyVector(current_particle.current_tour, current_particle.current_vector)
 
                 inercial_velocity = self.intertia_func(current_particle.current_vector)
-                cognative_velocity = self.threshholdVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour))*self.cognative_LF, (current_particle.best_personal_tour + current_particle.current_tour[::-1]))
+                cognative_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour)), self.cognative_LF), respectingBubbleSort(current_particle.current_tour, current_particle.best_personal_tour), 0.5)
 
-                social_velocity = self.multiplyVecotrs(self.multiplyVectorByConst(randomShuffle([i for i in range(len(self.weights[0]))]), self.social_LF),(neighbor_best + current_particle.current_tour.reverse()))
+                social_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(neighbor_best + current_particle.current_tour)), self.social_LF),respectingBubbleSort(current_particle.current_tour, neighbor_best), 0.5)
 
                 current_particle.current_vector = inercial_velocity + cognative_velocity + social_velocity
 
-                if self.tourFitness(current_particle.current_vector, self.weights) > self.tourFitness(current_particle.best_personal_tour, self.weights):
+
+
+
+                if self.tourFitness(current_particle.current_tour, self.weights) > self.tourFitness(current_particle.best_personal_tour, self.weights):
                     current_particle.best_personal_tour = current_particle.current_tour
 
             global_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles].index(
                 min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles]))
             global_best = self.all_particles[global_best_index].best_personal_tour
-        return global_best
+            time_counter += 1
+        return global_best, self.tourFitness(global_best, self.weights)
 
 def simple_inercia(start):
     return start
 
 if __name__ == '__main__':
-    swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 10)
+    top = swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 100)
+    print(top)
 

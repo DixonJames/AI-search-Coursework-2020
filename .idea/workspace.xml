@@ -4,7 +4,6 @@
     <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,11 +206,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_basic.py</url>
-          <line>138</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_basic.py</url>
           <line>80</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
@@ -219,6 +213,11 @@
           <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_basic.py</url>
           <line>82</line>
           <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_basic.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
