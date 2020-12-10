@@ -28,7 +28,14 @@ def respectingBubbleSort(list, order):
             repeat = False
     return swaps
 
-
+def randomShuffle(list):
+    shuffled = []
+    for i in range(len(list)):
+        index = random.randint(0,len(list)-1)
+        while list[index] in shuffled:
+            index = random.randint(0,len(list)-1)
+        shuffled.append(list[index])
+    return shuffled
 
 
 class particle:
@@ -50,13 +57,13 @@ class swarm:
         self.social_LF = social_LF
         self.neighborhood_radius = neighborhoodRadius
 
-    def tourFitness(self, tour):
+    def tourFitness(self, tour, weights):
         distance = 0
         for cty_order in range(len(tour)):
             if tour[cty_order] == tour[-1]:
-                distance += map[tour[-1]][tour[0]]
+                distance += weights[tour[-1]][tour[0]]
             else:
-                distance += map[tour[cty_order]][tour[cty_order + 1]]
+                distance += weights[tour[cty_order]][tour[cty_order + 1]]
         return distance
 
     def neighborhood(self, position):
@@ -90,44 +97,63 @@ class swarm:
 
     def applyVector(self, tour, vector):
         for swap in vector:
-            tempA = copy.copy(tour[vector[0]])
-            tempB = copy.copy(tour[vector[1]])
-            tour[vector[0]] = tempB
-            tour[vector[1]] = tempA
+            a, b = tour.index(tour[swap[0]]), tour.index(tour[swap[1]])
+            tour[b], tour[a] = tour[a], tour[b]
         return tour
+
+    def randomZeroOneVector(self, length):
+        vec = []
+        for i in range(length):
+            vec.append(random.randrange(0.1, 0.9, 0.1))
+        return vec
+
+    def threshholdVector(self, constlist, vector, threshold):
+        result = []
+        for i in range(len(constlist)):
+            if constlist[i] >= threshold:
+                result.append(vector[i])
+        return result
 
 
 
     def procedure(self, particleNUmber, iterations):
         for i in range(particleNUmber):
             p = particle()
-            p.current_tour, p.best_personal_tour = self.randTour()
-            p.current_vector = respectingBubbleSort(p.current_tour, self.randTour())
-        global_best_index = [self.tourFitness(p.best_personal_tour) for p in self.all_particles].index(min([self.tourFitness(p.best_personal_tour) for p in self.all_particles]))
+            random_tour = randomShuffle([i for i in range(len(self.weights[0]))])
+            p.current_tour, p.best_personal_tour = random_tour, random_tour
+            p.current_vector = respectingBubbleSort(p.current_tour, randomShuffle([i for i in range(len(self.weights[0]))]))
+            self.all_particles.append(p)
+        global_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles].index(min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles]))
         global_best = self.all_particles[global_best_index].best_personal_tour
 
         time_counter = 0
         while time_counter < iterations:
             for current_particle in self.all_particles:
-                neighbor_best_index = [self.tourFitness(p.best_personal_tour) for p in self.neighborhood(current_particle.current_tour)].index(
-                    min([self.tourFitness(p.best_personal_tour) for p in self.neighborhood(current_particle.current_tour)]))
+
+                neighbor_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)].index(
+                    min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)]))
                 neighbor_best = self.all_particles[neighbor_best_index].best_personal_tour
 
                 current_particle.current_tour = self.applyVector(current_particle.current_tour, current_particle.current_vector)
 
                 inercial_velocity = self.intertia_func(current_particle.current_vector)
-                cognative_velocity = self.multiplyVecotrs(self.multiplyVectorByConst(self.randTour(), self.cognative_LF), (current_particle.best_personal_tour + current_particle.current_tour.reverse()))
-                social_velocity = self.multiplyVecotrs(self.multiplyVectorByConst(self.randTour(), self.social_LF),(neighbor_best + current_particle.current_tour.reverse()))
+                cognative_velocity = self.threshholdVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour))*self.cognative_LF, (current_particle.best_personal_tour + current_particle.current_tour[::-1]))
+
+                social_velocity = self.multiplyVecotrs(self.multiplyVectorByConst(randomShuffle([i for i in range(len(self.weights[0]))]), self.social_LF),(neighbor_best + current_particle.current_tour.reverse()))
 
                 current_particle.current_vector = inercial_velocity + cognative_velocity + social_velocity
 
-                if self.tourFitness(current_particle.current_vector) > self.tourFitness(current_particle.best_personal_tour):
+                if self.tourFitness(current_particle.current_vector, self.weights) > self.tourFitness(current_particle.best_personal_tour, self.weights):
                     current_particle.best_personal_tour = current_particle.current_tour
 
-            global_best_index = [self.tourFitness(p.best_personal_tour) for p in self.all_particles].index(
-                min([self.tourFitness(p.best_personal_tour) for p in self.all_particles]))
+            global_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles].index(
+                min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles]))
             global_best = self.all_particles[global_best_index].best_personal_tour
+        return global_best
+
+def simple_inercia(start):
+    return start
 
 if __name__ == '__main__':
-    print(respectingBubbleSort(test_b, test_a))
+    swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 10)
 
