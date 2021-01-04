@@ -1,16 +1,16 @@
 import random
-
+import time
 
 map = [[0, 31, 32, 5, 30, 9, 15, 40, 14, 21, 7, 13], [31, 0, 5, 30, 40, 15, 8, 2, 4, 17, 50, 27], [32, 5, 0, 32, 25, 16, 3, 3, 10, 8, 40, 21], [5, 30, 32, 0, 50, 6, 30, 53, 10, 35, 12, 20], [30, 40, 25, 50, 0, 32, 10, 20, 34, 7, 20, 6], [9, 15, 16, 6, 32, 0, 15, 15, 4, 14, 21, 25], [15, 8, 3, 30, 10, 15, 0, 6, 9, 4, 9, 9], [40, 2, 3, 53, 20, 15, 6, 0, 7, 8, 30, 29], [14, 4, 10, 10, 34, 4, 9, 7, 0, 13, 31, 35], [21, 17, 8, 35, 7, 14, 4, 8, 13, 0, 12, 11], [7, 50, 40, 12, 20, 21, 9, 30, 31, 12, 0, 5], [13, 27, 21, 20, 6, 25, 9, 29, 35, 11, 5, 0]]
 best_tour = []
 
-def max_tour(map):
+def max_tour(distances):
     total = 0
-    for crossing in map:
+    for crossing in distances:
         total += max(crossing)
     return total
 
-tau = max_tour(map)
+
 
 def genRandomTour(city_num):
     tour = [num for num in range(int(city_num))]
@@ -24,14 +24,15 @@ def genStartPopulation(population_num, example_pop):
         population.append(rand_tour)
     return population
 
-def tourFitness(tour):
+def tourFitness(tour, distances):
+    #returns maxlength - length of tour
     distance = 0
     for cty_order in range(len(tour)):
         if tour[cty_order] == tour[-1]:
-            distance += map[tour[-1]][tour[0]]
+            distance += distances[tour[-1]][tour[0]]
         else:
-            distance += map[tour[cty_order]][tour[cty_order +1]]
-    return tau - distance
+            distance += distances[tour[cty_order]][tour[cty_order +1]]
+    return distance
 
 def findDuplicate(list):
     dupes = []
@@ -110,25 +111,31 @@ def applyMutations(new_pop, mutation_chance):
 
     return final_new_pop
 
-def testPopulation(population, top_fitness, top_tour):
+def testPopulation(population, top_fitness, top_tour, map_of_distances):
     for tour in population:
-        if top_fitness >= tourFitness(tour):
-            top_fitness = tourFitness(tour)
+        if top_fitness >= tourFitness(tour, map_of_distances):
+            top_fitness = tourFitness(tour, map_of_distances)
             top_tour = tour
     return top_fitness, top_tour
 
-def runTraining(iterations, mutation_chance):
-    top_fitness = tau
+
+def runTraining(time_frame,map_of_distances,  mutation_chance):
+    tau = max_tour(map_of_distances)
+    top_fitness = max_tour(map_of_distances)
     top_tour = []
-    population = genStartPopulation(10, map[0])
+    population = genStartPopulation(10, map_of_distances[0])
 
-    for i in range(iterations):
+    start_time = time.time()
+    # your code
+    elapsed_time = time.time() - start_time
+
+    while(time.time() - start_time < time_frame):
         #looping over each generation
-        print(f"{(i/iterations)*100}")
+        print(f"{time.time() - start_time}/{time_frame}")
 
-        population_fitness = [tourFitness(t) for t in population]
+        population_fitness = [tourFitness(t, map_of_distances) for t in population]
         total_fitness = sum(population_fitness)
-        population_percentage = [fitness/total_fitness for fitness in population_fitness]
+        population_percentage = [(tau - fitness)/total_fitness for fitness in population_fitness]
 
         new_pop = []
 
@@ -137,10 +144,10 @@ def runTraining(iterations, mutation_chance):
             parents = random.choices(population, weights=population_percentage, k=2)
             childA, childB = basicCrossoverTours(parents[0], parents[1])
 
-            childA_fitness = tourFitness(childA)
-            childB_fitness = tourFitness(childB)
+            childA_tour_length = tourFitness(childA, map_of_distances)
+            childB_tour_length = tourFitness(childB, map_of_distances)
 
-            if childA_fitness >= childB_fitness:
+            if childA_tour_length <= childB_tour_length:
                 new_pop.append(childA)
             else:
                 new_pop.append(childB)
@@ -148,11 +155,12 @@ def runTraining(iterations, mutation_chance):
         population = applyMutations(new_pop, mutation_chance)
         #print(population)
 
-        top_fitness, top_tour = testPopulation(population, top_fitness, top_tour)
+        top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
+        print(top_fitness)
 
     return top_tour, top_fitness
 
-
-
+def main(map):
+    return runTraining(5,map,  10)
 if __name__ == '__main__':
-    print(runTraining(100000, 10))
+    print(runTraining(100000,map,  10))

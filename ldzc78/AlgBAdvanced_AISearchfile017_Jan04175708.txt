@@ -1,0 +1,5 @@
+USER = ldzc78 (James Dixon),
+ALGORITHM CODE = GA, NAME OF CITY-FILE = AISearchfile017.txt,
+SIZE = 17, TOUR LENGTH = 4600,
+3,7,12,9,14,4,6,10,8,15,16,11,2,0,13,5,1,
+NOTE = 

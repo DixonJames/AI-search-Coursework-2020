@@ -140,7 +140,7 @@ class swarm:
         time_counter = 0
         while time_counter < iterations:
             for current_particle in self.all_particles:
-                print(current_particle)
+                print(current_particle.best_personal_tour)
 
                 neighbor_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)].index(
                     min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)]))
@@ -171,6 +171,6 @@ def simple_inercia(start):
     return start
 
 if __name__ == '__main__':
-    top = swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 100)
+    top = swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 1000)
     print(top)
 

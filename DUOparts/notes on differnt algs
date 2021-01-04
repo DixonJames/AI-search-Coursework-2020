@@ -11,6 +11,11 @@ BF, brute-force search, 6,
 ID, iterative deepening search, 6,
 BH, greedy best-first search, 6,
 GA, genetic algorithm, 6, #easy to inprove from the basic implimentation
+
+    1. optimising initial population
+    2. better crossover algorithum
+    3. split into sub populations
+
 AS, A* search, 7, # may be worth it becaise of focus on in lectures. (advanced version would be a better hearistic)
 IA, iterative deepening A* search, 8, #more memory efficient
 AC, ant colony optimization, 9,
@@ -23,3 +28,4 @@ PS, particle swarm optimization, 10,
 CA, Christofides algorithm, 10,
 LK, Lin-Kernighan, 10, #look at this, similar to  two three and four opt
 WF, water-flow algorithm, 10
+
