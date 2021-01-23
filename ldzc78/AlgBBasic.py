@@ -11,7 +11,6 @@
 import os
 import sys
 import time
-import random
 
 
 ############
@@ -152,7 +151,7 @@ def read_in_algorithm_codes_and_tariffs(alg_codes_file):
 ############ THE CITY FILE IS IN THE FOLDER 'city-files'.
 ############
 
-input_file = "AISearchfile017.txt"
+input_file = "AISearchfile180.txt"
 
 ############
 ############ PLEASE SCROLL DOWN UNTIL THE NEXT BLOCK OF CAPITALIZED COMMENTS.
@@ -223,7 +222,7 @@ print("   the distance matrix 'dist_matrix' has been built.")
 ############ THE FOLDER 'city-files' AND THE FOLDER WHOSE NAME IS YOUR USER-NAME, E.G., 'abcd12'.
 ############
 
-code_dictionary, tariff_dictionary, flag = read_in_algorithm_codes_and_tariffs("../alg_codes_and_tariffs.txt")
+code_dictionary, tariff_dictionary, flag = read_in_algorithm_codes_and_tariffs("../../alg_codes_and_tariffs.txt")
 
 if flag != "good":
     print("*** error: The text file 'alg_codes_and_tariffs.txt' does not exist.")
@@ -283,7 +282,7 @@ added_note = ""
 ############
 
 
-from ldzc78 import genetic_basic as AI_search_Alg
+from ldzc78.genetic import genetic_basic as AI_search_Alg
 
 tour, tour_length = AI_search_Alg.main(dist_matrix)
 

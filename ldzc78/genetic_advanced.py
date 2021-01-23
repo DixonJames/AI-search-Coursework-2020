@@ -2,6 +2,7 @@ import random
 import time
 
 map = [[0, 31, 32, 5, 30, 9, 15, 40, 14, 21, 7, 13], [31, 0, 5, 30, 40, 15, 8, 2, 4, 17, 50, 27], [32, 5, 0, 32, 25, 16, 3, 3, 10, 8, 40, 21], [5, 30, 32, 0, 50, 6, 30, 53, 10, 35, 12, 20], [30, 40, 25, 50, 0, 32, 10, 20, 34, 7, 20, 6], [9, 15, 16, 6, 32, 0, 15, 15, 4, 14, 21, 25], [15, 8, 3, 30, 10, 15, 0, 6, 9, 4, 9, 9], [40, 2, 3, 53, 20, 15, 6, 0, 7, 8, 30, 29], [14, 4, 10, 10, 34, 4, 9, 7, 0, 13, 31, 35], [21, 17, 8, 35, 7, 14, 4, 8, 13, 0, 12, 11], [7, 50, 40, 12, 20, 21, 9, 30, 31, 12, 0, 5], [13, 27, 21, 20, 6, 25, 9, 29, 35, 11, 5, 0]]
+
 best_tour = []
 
 def max_tour(distances):
@@ -9,6 +10,36 @@ def max_tour(distances):
     for crossing in distances:
         total += max(crossing)
     return total
+
+def two_opt_mutation(tour, distances):
+    A_city_i = random.randint(0, len(tour) -1)
+    B_city_i = random.randint(0, len(tour) - 2)
+    while B_city_i +1 == A_city_i or A_city_i + 1  == B_city_i or A_city_i == B_city_i or B_city_i < A_city_i or (B_city_i == len(tour) - 1 and A_city_i == 0):
+        B_city_i = random.randint(0, len(tour) - 2)
+        A_city_i = random.randint(0, len(tour) - 1)
+
+    B_city = tour[B_city_i]
+    B_n_city = tour[B_city_i + 1]
+    A_city = tour[A_city_i]
+    A_n_city = tour[A_city_i + 1]
+
+    original_p_weight = distances[B_n_city][B_city] + distances[A_n_city][A_city]
+    new_p_weight = distances[A_city][B_city] + distances[A_city_i][B_city_i]
+
+    if original_p_weight > new_p_weight:
+        mid_section = (tour[A_city_i + 2: B_city_i ])[::-1]
+        front_section = tour[:A_city_i + 1]
+        tail_section = tour[B_city_i + 1:]
+
+
+        new = front_section + [B_city] + mid_section + [A_n_city] + tail_section
+        if len(set(new)) != len(tour):
+            print("s")
+
+        tour = front_section + [B_city] + mid_section + [A_n_city] + tail_section
+
+    return tour
+
 
 def nearestNeighborAlg(map_distances, current):
     visited = [current]
@@ -57,8 +88,6 @@ def tourFitness(tour, distances):
     check_tour_length = check_tour_length + distances[tour[len(tour) - 1]][tour[0]]
     return check_tour_length
 
-
-
 def findDuplicate(list):
     dupes = []
     for char in list:
@@ -72,7 +101,6 @@ def findMissing(original, trial):
         if char not in trial:
             missing.append(char)
     return list(set(missing))
-
 
 def basicCrossoverTours(A_tour, B_tour):
     if len(A_tour) != len(B_tour):
@@ -113,7 +141,6 @@ def basicCrossoverTours(A_tour, B_tour):
             return A_trial, B_trial
         return False
 
-
 def cycleCrossoverOperator(A_tour, B_tour):
     offspring_alpha = [-1 for _ in range(len(A_tour))]
     offspring_beta = [-1 for _ in range(len(A_tour))]
@@ -143,6 +170,24 @@ def cycleCrossoverOperator(A_tour, B_tour):
         return A_tour, B_tour
     return offspring_alpha, offspring_beta
 
+def shift_change_mutation(tour):
+
+    B_i = random.randint(0, len(tour) - 1)
+    A_i = random.randint(0, B_i)
+    while B_i <= A_i:
+        B_i = random.randint(0, len(tour) - 1)
+        A_i = random.randint(0, B_i)
+
+    prefix = tour[:A_i]
+    postfix = tour[B_i + 1:]
+    middle = tour[A_i + 1: B_i]
+
+    new = prefix + [tour[B_i]] + middle + [tour[A_i]] + postfix
+
+    if len(set(new)) != len(set(tour)):
+        print("shit")
+
+    return new
 
 
 def basicSwapMutation(tour):
@@ -155,16 +200,17 @@ def basicSwapMutation(tour):
     tour[A_city], tour[B_city] = tour[B_city], tour[A_city]
     return tour
 
-
-
-def applyMutations(new_pop, mutation_chance):
+def applyMutations(new_pop, mutation_chance, opt_chance, distances):
     final_new_pop = []
     for child in new_pop:
         if random.randint(1, mutation_chance) == 1:
-            new_child = basicSwapMutation(child)
-
+            new_child = shift_change_mutation(child)
         else:
             new_child = child
+
+        if random.randint(1, opt_chance) == 1:
+            new_child = two_opt_mutation(child, distances)
+
         final_new_pop.append(new_child)
 
     return final_new_pop
@@ -175,7 +221,6 @@ def testPopulation(population, top_fitness, top_tour, map_of_distances):
             top_fitness = tourFitness(tour, map_of_distances)
             top_tour = tour
     return top_fitness, top_tour
-
 
 def parent_tournament(prospective_parents, parents_fitness, round_size):
     parent_indexes = [i for i in range(len(prospective_parents))]
@@ -197,16 +242,17 @@ def parent_tournament(prospective_parents, parents_fitness, round_size):
 
     return prospective_parents[group_A_max[1]], prospective_parents[group_B_max[1]]
 
-
-def runTraining(time_frame,map_of_distances,  mutation_chance):
+def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsize):
     tau = max_tour(map_of_distances)
     top_fitness = max_tour(map_of_distances)
     top_tour = []
-    population = genStartPopulation(10, map_of_distances[0])
+    population = genStartPopulation(popsize, map_of_distances[0])
 
-    greedy_population = genGreedyPopulation(10, map_of_distances)
+    greedy_population = genGreedyPopulation(len(map_of_distances[0]), map_of_distances)
 
-    population = greedy_population
+    population += greedy_population
+
+
 
     start_time = time.time()
     # your code
@@ -214,7 +260,7 @@ def runTraining(time_frame,map_of_distances,  mutation_chance):
 
     while(time.time() - start_time < time_frame):
         #looping over each generation
-        print(f"{time.time() - start_time}/{time_frame}")
+        #print(f"{time.time() - start_time}/{time_frame}")
 
         population_fitness = [tourFitness(t, map_of_distances) for t in population]
         total_fitness = sum(population_fitness)
@@ -222,9 +268,10 @@ def runTraining(time_frame,map_of_distances,  mutation_chance):
 
         new_pop = []
 
-        for j in range(len(population[0])):
+        for j in range(popsize):
             #making as many children as there are parents
             parents = random.choices(population, weights=population_percentage, k=2)
+
             #parents_set_b = parent_tournament(population, population_fitness, 5)
             #parents = (parents_set_a[0], parents_set_b[0])
             childA, childB = cycleCrossoverOperator(parents[0], parents[1])
@@ -232,20 +279,32 @@ def runTraining(time_frame,map_of_distances,  mutation_chance):
             childA_tour_length = tourFitness(childA, map_of_distances)
             childB_tour_length = tourFitness(childB, map_of_distances)
 
+            p_a = tourFitness(parents[0], map_of_distances)
+            p_b = tourFitness(parents[1], map_of_distances)
+
             if childA_tour_length <= childB_tour_length:
                 new_pop.append(childA)
             else:
                 new_pop.append(childB)
 
-        population = applyMutations(new_pop, mutation_chance)
+            #if p_b <= p_a:
+                #new_pop.append(parents[0])
+            #else:
+                #new_pop.append(parents[1])
+
+        population = applyMutations(new_pop, mutation_chance, opt_chance, map_of_distances)
         #print(population)
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
+        population.append(top_tour)
         print(top_fitness)
 
-    return top_tour, top_fitness
+    return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
-    return runTraining(58,map,  3)
+    print(runTraining(3600, map, 1, 1, 2*len(map[0])))
+
+
+
 if __name__ == '__main__':
-    print(runTraining(5,map,  3))
+    print(runTraining(3600, map, 1, 1, 2*len(map[0])))

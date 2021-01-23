@@ -119,19 +119,20 @@ def testPopulation(population, top_fitness, top_tour, map_of_distances):
     return top_fitness, top_tour
 
 
-def runTraining(time_frame,map_of_distances,  mutation_chance):
+def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
     tau = max_tour(map_of_distances)
     top_fitness = max_tour(map_of_distances)
     top_tour = []
-    population = genStartPopulation(10, map_of_distances[0])
+    population = genStartPopulation(popsize, map_of_distances[0])
 
     start_time = time.time()
     # your code
     elapsed_time = time.time() - start_time
-
+    c_gen = 0
     while(time.time() - start_time < time_frame):
+    #while (c_gen < time_frame):
         #looping over each generation
-        print(f"{time.time() - start_time}/{time_frame}")
+        #print(f"{time.time() - start_time}/{time_frame}")
 
         population_fitness = [tourFitness(t, map_of_distances) for t in population]
         total_fitness = sum(population_fitness)
@@ -139,7 +140,7 @@ def runTraining(time_frame,map_of_distances,  mutation_chance):
 
         new_pop = []
 
-        for j in range(len(population[0])):
+        for j in range((popsize)):
             #making as many children as there are parents
             parents = random.choices(population, weights=population_percentage, k=2)
             childA, childB = basicCrossoverTours(parents[0], parents[1])
@@ -157,10 +158,15 @@ def runTraining(time_frame,map_of_distances,  mutation_chance):
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
         print(top_fitness)
+        c_gen += 1
 
-    return top_tour, top_fitness
+    return top_tour, ourFitness(top_tour, map_of_distances)
 
 def main(map):
-    return runTraining(5,map,  10)
+    for i in range(1, 20):
+        print(runTraining(2600, map, i, 2*len(map[0]))[1])
+
 if __name__ == '__main__':
-    print(runTraining(100000,map,  10))
+    print(6, runTraining(58, map, 9, 6)[1])
+
+# pop size of 6 seems to be the optimum choice for a 58 second run
