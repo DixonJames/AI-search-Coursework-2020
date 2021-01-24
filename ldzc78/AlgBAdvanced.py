@@ -222,7 +222,7 @@ print("   the distance matrix 'dist_matrix' has been built.")
 ############ THE FOLDER 'city-files' AND THE FOLDER WHOSE NAME IS YOUR USER-NAME, E.G., 'abcd12'.
 ############
 
-code_dictionary, tariff_dictionary, flag = read_in_algorithm_codes_and_tariffs("../../alg_codes_and_tariffs.txt")
+code_dictionary, tariff_dictionary, flag = read_in_algorithm_codes_and_tariffs("../alg_codes_and_tariffs.txt")
 
 if flag != "good":
     print("*** error: The text file 'alg_codes_and_tariffs.txt' does not exist.")
@@ -282,7 +282,7 @@ added_note = ""
 ############
 
 
-from ldzc78.genetic import genetic_advanced as AI_search_Alg
+from ldzc78 import genetic_advanced as AI_search_Alg
 
 tour, tour_length = AI_search_Alg.main(dist_matrix)
 

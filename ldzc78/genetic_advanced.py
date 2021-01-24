@@ -297,14 +297,16 @@ def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsi
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
         population.append(top_tour)
-        print(top_fitness)
+        #print(top_fitness)
 
     return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
-    print(runTraining(3600, map, 1, 1, 2*len(map[0])))
+    for i in range(1,101):
+        print(runTraining(58, map, i, 1, 100)[1])
+
 
 
 
 if __name__ == '__main__':
-    print(runTraining(3600, map, 1, 1, 2*len(map[0])))
+    print(runTraining(3600, map, 1, 1, 2*len(map[0]))[1])

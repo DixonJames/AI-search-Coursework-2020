@@ -1,6 +1,7 @@
 import random
 import copy
 import math
+import time
 """
 basic bubble discretization of particle swarm in the main lecture #10
 """
@@ -37,6 +38,21 @@ def randomShuffle(list):
         shuffled.append(list[index])
     return shuffled
 
+def simple_inercia(start, c, multply_func):
+    return start
+
+def constantDegradeInercia(start, c, multply_func):
+
+    return multply_func(start, c)
+
+def tourFitness(tour, weights):
+    distance = 0
+    for cty_order in range(len(tour)):
+        if tour[cty_order] == tour[-1]:
+            distance += weights[tour[-1]][tour[0]]
+        else:
+            distance += weights[tour[cty_order]][tour[cty_order + 1]]
+    return distance
 
 class particle:
     def __init__(self):
@@ -45,11 +61,22 @@ class particle:
 
         self.current_vector = []
 
+    def updatePosition(self):
+        tour = self.current_tour
+        try:
+            for swap in self.current_vector:
+                    a, b = tour.index(tour[swap[0]]), tour.index(tour[swap[1]])
+                    tour[b], tour[a] = tour[a], tour[b]
+            return tour
+        except:
+            return tour
+
 class swarm:
     def __init__(self, weights, intertia_func, cognative_LF, social_LF, neighborhoodRadius = None):
         self.weights = weights
         self.intertia_func = intertia_func
         self.all_particles = []
+
         self.swarm_best_tour = []
 
         self.time = 0
@@ -116,7 +143,7 @@ class swarm:
     def threshholdVector(self, constlist, vector, threshold):
         result = []
         for i in range(len(constlist)-1):
-            if constlist[i] >= threshold:
+            if constlist[i] >= threshold and (len(vector) -1 >= i):
                 result.append(vector[i])
         return result
 
@@ -128,49 +155,133 @@ class swarm:
 
 
     def procedure(self, particleNUmber, iterations):
+        #creating population of particles with random positions and vectors
         for i in range(particleNUmber):
             p = particle()
-            random_tour = randomShuffle([i for i in range(len(self.weights[0]))])
-            p.current_tour, p.best_personal_tour = random_tour, random_tour
+            p.current_tour, p.best_personal_tour = randomShuffle([i for i in range(len(self.weights[0]))]), randomShuffle([i for i in range(len(self.weights[0]))])
             p.current_vector = respectingBubbleSort(p.current_tour, randomShuffle([i for i in range(len(self.weights[0]))]))
             self.all_particles.append(p)
+
+
         global_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles].index(min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles]))
         global_best = self.all_particles[global_best_index].best_personal_tour
 
         time_counter = 0
-        while time_counter < iterations:
+
+        start_time = time.time()
+        # your code
+        elapsed_time = time.time() - start_time
+        c_gen = 0
+        while (time_counter < iterations):
+        #while time_counter < iterations:
             for current_particle in self.all_particles:
-                print(current_particle.best_personal_tour)
+                #print(current_particle.best_personal_tour)
 
                 neighbor_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)].index(
                     min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.neighborhood(current_particle.current_tour)]))
+                #print(len(self.neighborhood(current_particle.current_tour)))
                 neighbor_best = self.all_particles[neighbor_best_index].best_personal_tour
 
-                current_particle.current_tour = self.applyVector(current_particle.current_tour, current_particle.current_vector)
 
-                inercial_velocity = self.intertia_func(current_particle.current_vector)
+                inercial_velocity = self.intertia_func(current_particle.current_vector, 0.5, self.multiplyVectorByConst)
+
                 cognative_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour)), self.cognative_LF), respectingBubbleSort(current_particle.current_tour, current_particle.best_personal_tour), 0.5)
-
                 social_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(neighbor_best + current_particle.current_tour)), self.social_LF),respectingBubbleSort(current_particle.current_tour, neighbor_best), 0.5)
 
                 current_particle.current_vector = inercial_velocity + cognative_velocity + social_velocity
+                current_particle.updatePosition()
+
+                #new_tour = self.applyVector(current_particle.current_tour, current_particle.current_vector)
+
+                if self.tourFitness(current_particle.current_tour, self.weights) < self.tourFitness(current_particle.best_personal_tour, self.weights):
+                    #print(self.tourFitness(current_particle.current_tour, self.weights) , self.tourFitness(current_particle.best_personal_tour, self.weights))
+                    current_particle.best_personal_tour = (current_particle.current_tour).copy()
 
 
-
-
-                if self.tourFitness(current_particle.current_tour, self.weights) > self.tourFitness(current_particle.best_personal_tour, self.weights):
-                    current_particle.best_personal_tour = current_particle.current_tour
-
-            global_best_index = [self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles].index(
-                min([self.tourFitness(p.best_personal_tour, self.weights) for p in self.all_particles]))
-            global_best = self.all_particles[global_best_index].best_personal_tour
+                if self.tourFitness(current_particle.best_personal_tour, self.weights) < self.tourFitness(global_best, self.weights):
+                    global_best = (current_particle.best_personal_tour).copy()
+                    #print(time_counter, self.tourFitness(global_best, self.weights))
+                #print(".")
             time_counter += 1
-        return global_best, self.tourFitness(global_best, self.weights)
+            #print(time_counter, self.tourFitness(global_best, self.weights))
 
-def simple_inercia(start):
-    return start
+
+        return global_best
+
+
+class swarmController:
+    def __init__(self, distances,  swarm_number, swarm_population, gens_before_merge):
+        self.swarms = []
+        self.swarm_number = swarm_number
+        self.swarm_pop = swarm_population
+
+        self.dist_matrix = distances
+        self.gens_before_merge = gens_before_merge
+
+    def tourFitness(self, particle):
+        tour = particle.best_personal_tour
+
+        distance = 0
+        for cty_order in range(len(tour)):
+            if tour[cty_order] == tour[-1]:
+                distance += self.dist_matrix[tour[-1]][tour[0]]
+            else:
+                distance += self.dist_matrix[tour[cty_order]][tour[cty_order + 1]]
+        return distance
+
+    def inicialiseSwarms(self):
+        for i in range(self.swarm_number):
+            self.swarms.append(swarm(self.dist_matrix, simple_inercia, 2.8, 1.3, None))
+
+    def mix_swarms(self):
+        all_s_particles = []
+        for subswarm in self.swarms:
+            all_s_particles.extend(subswarm.all_particles)
+            subswarm.all_particles = []
+        all_s_particles.sort(key = self.tourFitness)
+
+        while len(all_s_particles) != 0:
+            for subswarm in self.swarms:
+                if len(all_s_particles) != 0:
+                    subswarm.all_particles.append(all_s_particles.pop())
+
+        for subswarm in self.swarms:
+            subswarm.all_particles.sort(key=self.tourFitness)
+            subswarm.swarm_best_tour = subswarm.all_particles[0]
+
+        return 1
+
+    def bestParticle(self, groups):
+        all_s_particles = []
+        for subswarm in groups:
+            all_s_particles.extend(subswarm.all_particles)
+            subswarm.all_particles = []
+        all_s_particles.sort(key=self.tourFitness)
+
+        return all_s_particles[0]
+    def run(self, time_limmit):
+        start_time = time.time()
+        self.inicialiseSwarms()
+
+        while (time.time() - start_time < time_limmit):
+            for subswarm in self.swarms:
+                subswarm.procedure(self.swarm_pop, self.gens_before_merge)
+            self.mix_swarms()
+
+
+        overall_best_p = self.bestParticle(self.swarms)
+        overall_score = self.tourFitness(overall_best_p)
+        return overall_score
+
+def main(dist_matrix):
+    for i in range(10, 180, 10):
+        print(swarmController(input_map, 4, 30, 10).run(58))
+
 
 if __name__ == '__main__':
-    top = swarm(input_map, simple_inercia, 0.5, 0.5).procedure(100, 1000)
-    print(top)
-
+    for i in range(10, 180, 10):
+        print(swarmController(input_map, 4, 30, 10).run(10))
+#magicly correct coefficients: 2.8, 1.3
+#Carlisle, A., Dozier, G., 2001. An Off-the-shelf PSO.
+#Proceedings of the Workshop on Particle Swarm
+#Optimization, p. 1-6.
