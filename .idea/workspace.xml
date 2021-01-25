@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ldzc78/failed_particle_swarm_advanced.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/AlgABasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgABasic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ldzc78/AlgBBasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgBBasic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/genetic_advanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/genetic_advanced.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/genetic_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/genetic_basic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/particle_swarm_basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ldzc78/genetic" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
@@ -53,6 +53,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.particle_swarm_basic">
+    <configuration name="AlgAAdvanced" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI search Coursework 2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AlgABasic" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AlgBAdvanced (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="failed_particle_swarm_advanced" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -86,7 +107,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" />
+      <option name="SCRIPT_NAME" value="C:\GIT\AI\AI search Coursework 2020\ldzc78\failed_particle_swarm_advanced.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,49 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AlgBBasic (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AI search Coursework 2020" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgBBasic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="genetic_advanced (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AI search Coursework 2020" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/genetic_advanced.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="particle_swarm_basic" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="particle_swarm_basic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -158,20 +137,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="psoold" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI search Coursework 2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/psoold.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.AlgBAdvanced (1)" />
-      <item itemvalue="Python.AlgBBasic (1)" />
-      <item itemvalue="Python.genetic_advanced (1)" />
-      <item itemvalue="Python.particle_swarm_basic" />
+      <item itemvalue="Python.AlgAAdvanced" />
       <item itemvalue="Python.AlgABasic" />
+      <item itemvalue="Python.failed_particle_swarm_advanced" />
+      <item itemvalue="Python.particle_swarm_basic" />
+      <item itemvalue="Python.psoold" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.particle_swarm_basic" />
+        <item itemvalue="Python.failed_particle_swarm_advanced" />
+        <item itemvalue="Python.psoold" />
         <item itemvalue="Python.AlgABasic" />
-        <item itemvalue="Python.AlgBAdvanced (1)" />
-        <item itemvalue="Python.genetic_advanced (1)" />
-        <item itemvalue="Python.AlgBBasic (1)" />
+        <item itemvalue="Python.AlgAAdvanced" />
       </list>
     </recent_temporary>
   </component>
@@ -252,14 +252,24 @@
           <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py</url>
-          <line>180</line>
-          <option name="timeStamp" value="197" />
+          <url>file://$PROJECT_DIR$/ldzc78/failed_particle_swarm_advanced.py</url>
+          <line>234</line>
+          <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py</url>
-          <line>175</line>
-          <option name="timeStamp" value="198" />
+          <url>file://$PROJECT_DIR$/ldzc78/failed_particle_swarm_advanced.py</url>
+          <line>279</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_basic.py</url>
+          <line>172</line>
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/failed_particle_swarm_advanced.py</url>
+          <line>214</line>
+          <option name="timeStamp" value="241" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

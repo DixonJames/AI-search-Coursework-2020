@@ -160,7 +160,7 @@ def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
         print(top_fitness)
         c_gen += 1
 
-    return top_tour, ourFitness(top_tour, map_of_distances)
+    return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
     for i in range(1, 20):
