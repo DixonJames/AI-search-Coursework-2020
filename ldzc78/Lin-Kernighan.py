@@ -23,6 +23,11 @@ def randomShuffle(candidate_tour):
         shuffled.append(candidate_tour[index])
     return shuffled
 
+def partner(index, relationchip):
+    if index == relationchip[0]:
+        return relationchip[1]
+    return relationchip[0]
+
 def validateTour(proposed_edges, weights):
     """
     every city shuold appear in exactly two edges. thould be as amny edges as cities
@@ -32,7 +37,7 @@ def validateTour(proposed_edges, weights):
     """
     if len(proposed_edges) != len(weights[0]):
         return False
-    city_count = [i for i in range(len(weights) -1)]
+    city_count = [0 for i in range(len(weights))]
 
     for edge in proposed_edges:
         city_count[edge[0]] += 1
@@ -42,7 +47,52 @@ def validateTour(proposed_edges, weights):
         if city != 2:
             return False
 
+    if createCycle(proposed_edges) == False:
+        return False
+
+
+
     return True
+
+def createCycle(edge_set):
+    parts = []
+    edge_list = list(edge_set)
+
+    for edge in edge_list:
+        parts.append([edge[0], edge[1]])
+
+    tour = []
+
+
+    tour = [parts[0][0], parts[0][1]]
+    parts.remove(parts[0])
+
+    while len(tour) != len(edge_list):
+        for part in parts:
+
+            if tour[0] == part[0]:
+                tour = (list(reversed(tour)) + part[1:])
+                parts.remove(part)
+            elif tour[-1] == part[0]:
+                tour = (tour + part[1:])
+                parts.remove(part)
+            elif tour[0] == part[-1]:
+                tour = (part + tour[1:])
+                parts.remove(part)
+            elif tour[-1] == part[-1]:
+                tour = (part + list(reversed(tour))[1:])
+                parts.remove(part)
+        if tour[0] == tour[-1] and len(tour) != 1:
+            return False
+
+    return tour
+
+
+
+
+
+
+
 
 
 
@@ -58,7 +108,7 @@ class Tour:
         :return: a list of edge tuples
         """
         all_edges = set()
-        for city_i in len(self.tour):
+        for city_i in range(len(self.tour)):
             if self.tour.index(self.tour[city_i]) != len(self.tour) - 1:
                 all_edges.add((self.tour[city_i], self.tour[city_i + 1]))
             else:
@@ -72,7 +122,7 @@ class Tour:
         :return: list of citys that are connected to the city in the tour (should be 2)
         """
         connected_citys = []
-        for edge in self.edgesList(self.tour):
+        for edge in self.edgesSet():
             if edge[0] == city:
                 connected_citys.append(edge[1])
             elif edge[1] == city:
@@ -86,13 +136,15 @@ class Tour:
         :param city:
         :return:
         """
-        black_list = set(city)
-        all_edges = self.edgesList()
+        black_list = set()
+        black_list.add(city)
+        all_edges = self.edgesSet()
+
         for edge in all_edges:
             if edge[0] == city:
-                black_list.append(edge[1])
+                black_list.add(edge[1])
 
-        return all_edges.difference(black_list)
+        return list(set(i for i in range(len(self.weights[0]))).difference(black_list).difference(black_list))
 
 
 
@@ -107,18 +159,101 @@ class Improvement:
 
         self.found_better = True
 
-    def setWeightLost(self):
+    def setWeightLost(self, custom_add=None, custom_rem=None):
         """
         looks at both of the add and remove sets. calculates the weight lost (or gained)
         :return:
         """
-        pass
+        add_tot = 0
+        remove_tot = 0
 
-    def swapEdgeSets(self):
-        current_edges = self.input_tour.edgesList()
-        new_tour_set = self.add_edges.union((current_edges.differance(self.remove_edges)))
+        add_set = set()
+        rem_set = set()
 
-        return new_tour_set
+        if (custom_add is not None) and (custom_rem is not None):
+            add_set = custom_add
+            rem_set = custom_rem
+        else:
+            add_set = self.add_edges
+            rem_set = self.remove_edges
+
+        for edge in add_set:
+            add_tot += self.input_tour.weights[edge[0]][edge[1]]
+        for edge in rem_set:
+            remove_tot += self.input_tour.weights[edge[0]][edge[1]]
+        weight_loss = remove_tot - add_tot
+        return weight_loss
+
+
+    def swapEdgeSets(self, custom_add=None, custom_rem=None):
+        current_edges = self.input_tour.edgesSet()
+        if not((custom_add is not None) and (custom_rem is not None)):
+            custom_add = self.add_edges
+            custom_rem = self.remove_edges
+
+        for edge in custom_rem:
+            reversed_edge = (edge[1], edge[0])
+            if edge in current_edges:
+                current_edges.remove(edge)
+            if reversed_edge in current_edges:
+                current_edges.remove(reversed_edge)
+
+        for edge in custom_add:
+            current_edges.add(edge)
+
+
+        return current_edges
+
+    def removeEdge(self, original_city, T2, tail_removal_city):
+        # test if new tour is valid
+        # test if the gain is posative
+        # if so we have sucseeded, set tour to this one and re-start
+        # otherwose we look for a new line to add
+
+        for head_removal_city in self.input_tour.currentConnections(tail_removal_city):
+            test_rem = (tail_removal_city, head_removal_city)
+            test_add = (head_removal_city, original_city)
+
+            #FOR inprovemnt could add here to check if edge to remove has aleady been added at some point
+            if head_removal_city != original_city:
+
+                temp_removal_edges = self.remove_edges.copy()
+                temp_removal_edges.update({test_rem})
+
+                temp_add_edges = self.add_edges.copy()
+                temp_add_edges.update({test_add})
+
+                trial_tour = self.swapEdgeSets(temp_add_edges, temp_removal_edges)
+
+                if validateTour(trial_tour, self.input_tour.weights):
+                    if self.setWeightLost(temp_add_edges, temp_removal_edges) > 0:
+                        self.input_tour.tour = createCycle(trial_tour)
+                        return True
+                    else:
+                        self.remove_edges.add(test_rem)
+                        return self.addEdge(original_city, tail_removal_city, head_removal_city)
+        return False
+
+
+    def addEdge(self, original_city, tail, head):
+        for trial_add_city in self.input_tour.validPotentialNeighbors(head):
+            trial_edge_b = (trial_add_city, head)
+            trial_edge_f = (head, trial_add_city)
+            if trial_add_city != tail and trial_edge_f not in self.input_tour.edgesSet() and trial_edge_b not in self.input_tour.edgesSet():
+
+                temp_removal_edges = self.remove_edges.copy()
+
+                temp_add_edges = self.add_edges.copy()
+                temp_add_edges.update({trial_edge_f})
+
+                if self.setWeightLost() - self.input_tour.weights[head][trial_add_city] > 0:
+                    self.add_edges.add(trial_edge_f)
+
+                    return self.removeEdge(original_city, head, trial_add_city)
+        return False
+
+
+
 
     def LKinprovemnt(self):
         """
@@ -136,10 +271,21 @@ class Improvement:
 
         for T1 in self.input_tour.tour:
             for T2 in self.input_tour.currentConnections(T1):
+                self.remove_edges = set()
                 self.remove_edges.add((T1, T2))
+                remove_edge_found = True
 
                 for T3 in self.input_tour.validPotentialNeighbors(T2):
+                    self.add_edges = set()
                     self.add_edges.add((T2, T3))
+
+                    if self.setWeightLost() > 0:
+                        remove_edge_found = self.removeEdge(T1, T2, T3)
+
+                        if remove_edge_found:
+                            return True
+        return False
+
 
 
 
@@ -149,7 +295,7 @@ class Improvement:
 
 
 def main(weights):
-    current_tour = randomShuffle([i for i in range(len(weights) - 1)])
+    current_tour = randomShuffle([i for i in range(len(weights))])
     continue_search = True
 
 
@@ -161,11 +307,13 @@ def main(weights):
         inproved_tour = Improvement(old_tour)
 
         #seach for a better tour
-        inproved_tour.searchBetter()
+
 
         #if a better one found, repeite
-        continue_search = inproved_tour.found_better
-        current_tour = continue_search.tour
+        continue_search = inproved_tour.LKinprovemnt()
+
+        current_tour = old_tour.tour
+        print(tourFitness(current_tour, weights))
 
 
 

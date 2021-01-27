@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ldzc78/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/un used algs/lin-kernighan_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/un used algs/lin-kernighan_basic___dontuse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +50,7 @@
       <recent name="C:\GIT\AI\AI search Coursework 2020\DUOparts\new mutation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.AlgABasic">
+  <component name="RunManager" selected="Python.Lin-Kernighan">
     <configuration name="AlgAAdvanced" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -89,6 +85,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgABasic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Lin-Kernighan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AI search Coursework 2020" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,41 +156,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AI search Coursework 2020" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ldzc78" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.particle_swarm_basic" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.particle_swarm_advanced" />
       <item itemvalue="Python.AlgAAdvanced" />
       <item itemvalue="Python.AlgABasic" />
+      <item itemvalue="Python.Lin-Kernighan" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Lin-Kernighan" />
         <item itemvalue="Python.AlgABasic" />
         <item itemvalue="Python.AlgAAdvanced" />
         <item itemvalue="Python.particle_swarm_advanced" />
         <item itemvalue="Python.particle_swarm_basic" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -292,6 +288,26 @@
           <url>file://$PROJECT_DIR$/ldzc78/particle_swarm_advanced.py</url>
           <line>224</line>
           <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/Lin-Kernighan.py</url>
+          <line>315</line>
+          <option name="timeStamp" value="283" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/Lin-Kernighan.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="337" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/Lin-Kernighan.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="341" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/Lin-Kernighan.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="344" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
