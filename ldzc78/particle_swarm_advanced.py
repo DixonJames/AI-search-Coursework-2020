@@ -28,43 +28,43 @@ def respectingBubbleSort(list, order):
             repeat = False
     return swaps
 
-def vectorByPermutation(tour_a, tour_b):
-    list_cities = tour_a.copy()
+def vectorByPermutation(target_vec, start_vec):
+    # makes vector from start to target
+    list_cities = target_vec.copy()
     partner = {}
     cycles = []
-    for city_i in range(len(tour_a)):
-        partner[tour_a[city_i]] = tour_b[city_i]
+    for city_i in range(len(target_vec)):
+        partner[target_vec[city_i]] = start_vec[city_i]
 
     while len(list_cities) != 0:
         cycle = []
-        current_city = list_cities.pop()
-        while partner[current_city] != current_city:
+        beginning = list_cities.pop()
+        current_city = beginning
+        while partner[current_city] != beginning:
             cycle.append(current_city)
 
-            if len(cycle) > 1:
-                if partner[current_city] != cycle[0]:
-                    cycle.append(partner[current_city])
-            else:
-                cycle.append(partner[current_city])
-
             current_city = partner[current_city]
-            del list_cities[list_cities.index(partner[current_city])]
+            if current_city != beginning:
+                del list_cities[list_cities.index(current_city)]
+        cycle.append(current_city)
 
         if len(cycle) != 0:
-            cycles.extend(cycle)
+            cycles.append(cycle)
 
+    sorted_c =[]
     for cycle in cycles:
-        cycle.sort()
+        old = cycle
+        min_index = cycle.index(min(cycle))
+        sorted_c.append([cycle[min_index]] + cycle[min_index + 1:] + cycle[:min_index])
 
-    cycles.sort(key=lambda a: len(a))
+    sorted_c.sort(key=lambda a: a[0])
 
     swaps = []
-    for cycle in cycles:
+    for cycle in sorted_c:
         for i in range(len(cycle)-1):
-            swaps.append((cycle[i], cycle[i+1]))
+            swaps.append((target_vec.index(cycle[i]), target_vec.index(cycle[i + 1])))
 
     return swaps
-
 
 def randomShuffle(list):
     shuffled = []
@@ -143,7 +143,7 @@ class swarm:
 
 
     def distance(self, vectorA, vectorB):
-        return abs(len(respectingBubbleSort(vectorA, vectorB)))
+        return abs(len(vectorByPermutation(vectorA, vectorB)))
 
     def randTour(self):
         return random.shuffle([i for i in range(len(self.weights[0])-1)])
@@ -185,7 +185,7 @@ class swarm:
         for i in range(particleNUmber):
             p = particle()
             p.current_tour, p.best_personal_tour = randomShuffle([i for i in range(len(self.weights[0]))]), randomShuffle([i for i in range(len(self.weights[0]))])
-            proposed_vec = respectingBubbleSort(p.current_tour, randomShuffle([i for i in range(len(self.weights[0]))]))
+            proposed_vec = vectorByPermutation(p.current_tour, randomShuffle([i for i in range(len(self.weights[0]))]))
             p.current_vector = proposed_vec[:min(300, len(proposed_vec))]
             self.all_particles.append(p)
 
@@ -204,8 +204,8 @@ class swarm:
                 neighbor_best = self.all_particles[neighbor_best_index].best_personal_tour
 
                 inercial_velocity = self.intertia_func(current_particle.current_vector, 0.9, self.multiplyVectorByConst)
-                cognative_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour)), self.cognative_LF), respectingBubbleSort(current_particle.current_tour, current_particle.best_personal_tour), 0.5)
-                social_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(neighbor_best + current_particle.current_tour)), self.social_LF),respectingBubbleSort(current_particle.current_tour, neighbor_best), 0.5)
+                cognative_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(current_particle.best_personal_tour + current_particle.current_tour)), self.cognative_LF), vectorByPermutation(current_particle.current_tour, current_particle.best_personal_tour), 0.5)
+                social_velocity = self.threshholdVector(self.applyConstVector(self.randomZeroOneVector(len(neighbor_best + current_particle.current_tour)), self.social_LF),vectorByPermutation(current_particle.current_tour, neighbor_best), 0.5)
 
                 current_particle.current_vector = inercial_velocity + cognative_velocity + social_velocity
                 current_particle.updatePosition()
