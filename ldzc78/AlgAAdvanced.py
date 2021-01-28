@@ -257,7 +257,7 @@ my_last_name = "Dixon"
 ############ 'alg_codes_and_tariffs.txt' (READ THIS FILE TO SEE THE CODES).
 ############
 
-algorithm_code = "PS"
+algorithm_code = "LK"
 
 ############
 ############ DO NOT TOUCH OR ALTER THE CODE BELOW! YOU HAVE BEEN WARNED!
@@ -283,7 +283,7 @@ added_note = ""
 ############
 
 
-from ldzc78 import failed_particle_swarm_advanced as AI_search_Alg
+from ldzc78 import LinKernighan_advanced as AI_search_Alg
 
 tour, tour_length = AI_search_Alg.main(dist_matrix)
 
