@@ -309,11 +309,12 @@ class Improvement:
 
 
 def main(weights):
+    start_time = time.time()
     time_frame = 58
     current_tour = randomShuffle([i for i in range(len(weights))])
     continue_search = True
 
-    start_time = time.time()
+
 
     elapsed_time = time.time() - start_time
 
@@ -322,7 +323,10 @@ def main(weights):
 
     last_res = 0
 
+    largest_inp_time = time.time() - time.time()
+
     while continue_search:
+        starting_imp_time = time.time()
         #goes though this for every inprovement it finds
 
         #set up tour and inprovemtn object
@@ -359,7 +363,11 @@ def main(weights):
         print((inproved_tour.k_opt), tourFitness(current_tour, weights))
         last_res = tourFitness(current_tour, weights)
 
-    print(time.time() - start_time )
+        if(time.time() - starting_imp_time > largest_inp_time):
+            largest_inp_time = time.time() - starting_imp_time
+
+    #print(time.time() - start_time )
+    print(largest_inp_time)
     return old_tour.tour, tourFitness(old_tour.tour, weights)
 
 
