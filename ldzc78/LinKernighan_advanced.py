@@ -272,10 +272,10 @@ class Improvement:
         the main part of LK
         goes though all possible staring cities (T1)
             for each stating city, pick one of its tour adjacent cities (T2)(will trial both)
-                for each of T2's POSISBLE neighbors check if replacing T1->T2 edge with T2->T3 has a better weighting
+                for each of T2's POSSIBLE neighbors check if replacing T1->T2 edge with T2->T3 has a better weighting
                     if so:
                         find another edge to remove
-        updates tour with new more efficint tour if such a tour is found
+        updates tour with new more efficient tour if such a tour is found
         :return: True if improvement found, otherwise False.
         """
         self.add_edges = set()
@@ -295,8 +295,8 @@ class Improvement:
                         remove_edge_found = self.removeEdge(T1, T2, T3)
 
                         if remove_edge_found:
-                            self.added.update(self.add_edges)
-                            self.removed.update(self.remove_edges)
+                            #self.added.update(self.add_edges)
+                            #self.removed.update(self.remove_edges)
                             return True
         return False
 

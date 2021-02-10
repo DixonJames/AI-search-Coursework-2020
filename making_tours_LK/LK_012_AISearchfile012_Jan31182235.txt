@@ -1,0 +1,5 @@
+USER = ldzc78 (James Dixon),
+ALGORITHM CODE = LK, NAME OF CITY-FILE = AISearchfile012.txt,
+SIZE = 12, TOUR LENGTH = 56,
+5,8,1,7,2,6,9,4,11,10,0,3,
+NOTE = :LK_012

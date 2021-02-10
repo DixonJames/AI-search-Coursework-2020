@@ -120,16 +120,21 @@ def testPopulation(population, top_fitness, top_tour, map_of_distances):
 
 
 def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
+    start_time = time.time()
     tau = max_tour(map_of_distances)
     top_fitness = max_tour(map_of_distances)
     top_tour = []
     population = genStartPopulation(popsize, map_of_distances[0])
 
-    start_time = time.time()
+
     # your code
     elapsed_time = time.time() - start_time
     c_gen = 0
-    while(time.time() - start_time < time_frame):
+
+    tour_time_taken = time.time() - time.time()
+
+    while (time.time() - start_time + tour_time_taken < time_frame):
+        start_gen_time = time.time()
     #while (c_gen < time_frame):
         #looping over each generation
         #print(f"{time.time() - start_time}/{time_frame}")
@@ -157,14 +162,17 @@ def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
         #print(population)
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
-        print(top_fitness)
+
         c_gen += 1
+
+        tour_time_taken = time.time() - start_gen_time
+
 
     return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
-    for i in range(1, 20):
-        print(runTraining(2600, map, i, 2*len(map[0]))[1])
+    print(runTraining(58, map, 2, 50)[1])
+
 
 if __name__ == '__main__':
     print(6, runTraining(58, map, 9, 6)[1])

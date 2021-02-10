@@ -130,7 +130,7 @@ class Tour:
 
         return connected_citys
 
-    def validPotentialNeighbors(self, city):
+    def validPotentialNeighbors(self, city, nearest = None):
         """
         returns a whitlelist containg the city and the city currently connected to in the tour
         :param city:
@@ -144,7 +144,11 @@ class Tour:
             if edge[0] == city:
                 black_list.add(edge[1])
 
-        return list(set(i for i in range(len(self.weights[0]))).difference(black_list).difference(black_list))
+        valid =  list(set(i for i in range(len(self.weights[0])) if i != city).difference(black_list).difference(black_list))
+        if nearest != None:
+            best_neighbors = sorted(valid, key= (lambda c : self.weights[city][c]))[:nearest]
+            return best_neighbors
+        return valid
 
 
 
@@ -160,6 +164,9 @@ class Improvement:
         self.found_better = True
 
         self.k_opt = 2
+
+        self.added = set()
+        self.removed = set()
 
     def setWeightLost(self, custom_add=None, custom_rem=None):
         """
@@ -216,8 +223,8 @@ class Improvement:
             test_rem = (tail_removal_city, head_removal_city)
             test_add = (head_removal_city, original_city)
 
-            #FOR inprovemnt could add here to check if edge to remove has aleady been added at some point
-            if head_removal_city != original_city:
+
+            if head_removal_city != original_city and not(test_rem in self.added) and not((test_rem[1], test_rem[0]) in self.added):
 
                 temp_removal_edges = self.remove_edges.copy()
                 temp_removal_edges.update({test_rem})
@@ -238,10 +245,12 @@ class Improvement:
 
 
     def addEdge(self, original_city, tail, head):
-        for trial_add_city in self.input_tour.validPotentialNeighbors(head):
+        for trial_add_city in self.input_tour.validPotentialNeighbors(head, 5):
+            #inproved: only looks at 5 best neighbors
+
             trial_edge_b = (trial_add_city, head)
             trial_edge_f = (head, trial_add_city)
-            if trial_add_city != tail and trial_edge_f not in self.input_tour.edgesSet() and trial_edge_b not in self.input_tour.edgesSet():
+            if trial_add_city != tail and not(trial_edge_f  in self.input_tour.edgesSet()) and not(trial_edge_b  in self.input_tour.edgesSet()) and not(trial_edge_f  in self.removed) and not(trial_edge_b  in self.removed):
 
                 temp_removal_edges = self.remove_edges.copy()
 
@@ -286,6 +295,8 @@ class Improvement:
                         remove_edge_found = self.removeEdge(T1, T2, T3)
 
                         if remove_edge_found:
+                            #self.added.update(self.add_edges)
+                            #self.removed.update(self.remove_edges)
                             return True
         return False
 
@@ -306,6 +317,10 @@ def main(weights):
 
     elapsed_time = time.time() - start_time
 
+    added = set()
+    removed = set()
+
+    last_res = 0
 
     while continue_search:
         #goes though this for every inprovement it finds
@@ -313,18 +328,38 @@ def main(weights):
         #set up tour and inprovemtn object
         old_tour = Tour(weights, current_tour)
         inproved_tour = Improvement(old_tour)
+        inproved_tour.added = added
+        inproved_tour.removed = removed
 
         #seach for a better tour
 
 
         #if a better one found, repeite
         continue_search = inproved_tour.LKinprovemnt()
+        added.update(inproved_tour.added)
+        removed.update(inproved_tour.removed)
+        if continue_search == False:
+            added = set()
+            removed = set()
+
+            #if we run out of edges, have what we got as the starting tour and begin again
+            continue_search = True
         if(time.time() - start_time > time_frame):
             continue_search = False
 
-        current_tour = old_tour.tour
-        print((inproved_tour.k_opt), tourFitness(current_tour, weights))
 
+
+        current_tour = old_tour.tour
+        #inprovement that if get same result twice, end it
+        if tourFitness(current_tour, weights) == last_res:
+            continue_search  = False
+
+
+
+        print((inproved_tour.k_opt), tourFitness(current_tour, weights))
+        last_res = tourFitness(current_tour, weights)
+
+    print(time.time() - start_time )
     return old_tour.tour, tourFitness(old_tour.tour, weights)
 
 

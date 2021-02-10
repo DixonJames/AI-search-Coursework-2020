@@ -23,10 +23,8 @@ def two_opt_mutation(tour, distances):
     A_city = tour[A_city_i]
     A_n_city = tour[A_city_i + 1]
 
-    original_p_weight = distances[B_n_city][B_city] + distances[A_n_city][A_city]
-    new_p_weight = distances[A_city][B_city] + distances[A_city_i][B_city_i]
 
-    if original_p_weight > new_p_weight:
+    if True:
         mid_section = (tour[A_city_i + 2: B_city_i ])[::-1]
         front_section = tour[:A_city_i + 1]
         tail_section = tour[B_city_i + 1:]
@@ -243,22 +241,32 @@ def parent_tournament(prospective_parents, parents_fitness, round_size):
     return prospective_parents[group_A_max[1]], prospective_parents[group_B_max[1]]
 
 def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsize):
+    start_time = time.time()
     tau = max_tour(map_of_distances)
     top_fitness = max_tour(map_of_distances)
     top_tour = []
+
+
+
+
     population = genStartPopulation(popsize, map_of_distances[0])
 
-    greedy_population = genGreedyPopulation(len(map_of_distances[0]), map_of_distances)
+    greedy_population = genGreedyPopulation(popsize, map_of_distances)
 
-    population += greedy_population
+    #population += greedy_population
+
+    if popsize < len(greedy_population):
+        population = population[:(popsize//2)] + greedy_population[:(popsize//2)]
 
 
 
-    start_time = time.time()
     # your code
     elapsed_time = time.time() - start_time
 
-    while(time.time() - start_time < time_frame):
+    tour_time_taken = time.time() - time.time()
+
+    while(time.time() - start_time +  tour_time_taken < time_frame):
+        start_gen_time = time.time()
         #looping over each generation
         #print(f"{time.time() - start_time}/{time_frame}")
 
@@ -270,10 +278,10 @@ def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsi
 
         for j in range(popsize):
             #making as many children as there are parents
-            parents = random.choices(population, weights=population_percentage, k=2)
+            parents_set_a = random.choices(population, weights=population_percentage, k=2)
 
-            #parents_set_b = parent_tournament(population, population_fitness, 5)
-            #parents = (parents_set_a[0], parents_set_b[0])
+            parents_set_b = parent_tournament(population, population_fitness, 5)
+            parents = (parents_set_a[0], parents_set_b[0])
             childA, childB = cycleCrossoverOperator(parents[0], parents[1])
 
             childA_tour_length = tourFitness(childA, map_of_distances)
@@ -299,14 +307,19 @@ def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsi
         population.append(top_tour)
         #print(top_fitness)
 
+        tour_time_taken = time.time() - start_gen_time
+
+    print(tour_time_taken, time.time() - start_time +  tour_time_taken)
     return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
-    for i in range(1,101):
-        print(runTraining(58, map, i, 1, 100)[1])
+    #print('running James!')
+    for i in range(1, 10, 1):
+        print(runTraining(58, map, 5, 2, 50)[1])
 
 
 
 
 if __name__ == '__main__':
-    print(runTraining(3600, map, 1, 1, 2*len(map[0]))[1])
+    #print(runTraining(3600, map, 1, 1, 2*len(map[0]))[1])
+    main(map)

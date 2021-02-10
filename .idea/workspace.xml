@@ -2,11 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="311476aa-6ea2-4fc2-a1db-24d9ff689b0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ldzc78/LinKernighan_advanced.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_012_AISearchfile012_Jan31182235.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_017_AISearchfile017_Feb01000134.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_021_AISearchfile021_Jan31214504.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_026_AISearchfile026_Jan31201030.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_042_AISearchfile042_Jan31214448.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_048_AISearchfile048_Feb01000145.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_058_AISearchfile058_Jan31201031.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_175_AISearchfile175_Feb01000217.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_180_AISearchfile180_Jan31214441.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_LK/LK_535_AISearchfile535_Feb01181541.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_012_AISearchfile012_Feb08162927.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_017_AISearchfile017_Feb08140310.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_021_AISearchfile021_Feb08162929.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_026_AISearchfile026_Feb08162930.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_042_AISearchfile042_Feb08140314.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_048_AISearchfile048_Feb08162911.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_058_AISearchfile058_Feb08162933.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_175_AISearchfile175_Feb08140341.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_180_AISearchfile180_Feb08235527.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/making_tours_gen/gen_535_AISearchfile535_Feb09001813.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skeleton.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgAAdvanced.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/AlgABasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgABasic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/LinKernighan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/AlgAAdvanced_AISearchfile180_Jan28161503.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/AlgAAdvanced_AISearchfile180_Jan28161558.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/AlgBBasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/AlgBBasic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/Lin-Kernighan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/LinKernighan_advanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/LinKernighan_advanced.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/genetic_advanced.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/genetic_advanced.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/genetic_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/ldzc78/genetic_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/un used algs/NOTSUBMIT neighrest neighbor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/un used algs/ant_basic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ldzc78/un used algs/lin-kernighan_basic___dontuse.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +52,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ldzc78/LinKernighan.py" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1jQMTZv0Rh67mgNPKlxtyy5F5vu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -38,22 +64,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ldzc78/genetic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GIT\AI\AI search Coursework 2020" />
+      <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78" />
+      <recent name="C:\GIT\AI\AI search Coursework 2020\making_tours_LK" />
       <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78\genetic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GIT\AI\AI search Coursework 2020\making_tours_LK" />
+      <recent name="C:\GIT\AI\AI search Coursework 2020\making_tours_gen" />
+      <recent name="C:\GIT\AI\AI search Coursework 2020" />
+      <recent name="C:\GIT\AI\AI search Coursework 2020\making_tours" />
       <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78" />
-      <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78\genetic" />
-      <recent name="C:\GIT\AI\AI search Coursework 2020\DUOparts\gen 180" />
-      <recent name="C:\GIT\AI\AI search Coursework 2020\ldzc78\un used algs" />
-      <recent name="C:\GIT\AI\AI search Coursework 2020\DUOparts\new mutation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.LinKernighan_advanced">
+  <component name="RunManager" selected="Python.AlgBAdvanced">
     <configuration name="AlgAAdvanced" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,7 +104,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AlgABasic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgBAdvanced" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -87,7 +116,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgABasic.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgBAdvanced.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -96,7 +125,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="LinKernighan (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgBBasic" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -108,7 +137,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/LinKernighan.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/AlgBBasic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="LinKernighan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="genetic_advanced (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,7 +158,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\GIT\AI\AI search Coursework 2020\ldzc78\LinKernighan.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/genetic_advanced.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,7 +167,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="LinKernighan_advanced" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="genetic_basic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI search Coursework 2020" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -150,7 +179,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/LinKernighan_advanced.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldzc78/genetic_basic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -161,18 +190,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.AlgAAdvanced" />
-      <item itemvalue="Python.AlgABasic" />
-      <item itemvalue="Python.LinKernighan (1)" />
-      <item itemvalue="Python.LinKernighan" />
-      <item itemvalue="Python.LinKernighan_advanced" />
+      <item itemvalue="Python.AlgBAdvanced" />
+      <item itemvalue="Python.genetic_advanced (1)" />
+      <item itemvalue="Python.genetic_basic" />
+      <item itemvalue="Python.AlgBBasic" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.LinKernighan_advanced" />
+        <item itemvalue="Python.AlgBAdvanced" />
+        <item itemvalue="Python.genetic_advanced (1)" />
+        <item itemvalue="Python.AlgBBasic" />
         <item itemvalue="Python.AlgAAdvanced" />
-        <item itemvalue="Python.AlgABasic" />
-        <item itemvalue="Python.LinKernighan (1)" />
-        <item itemvalue="Python.LinKernighan" />
+        <item itemvalue="Python.genetic_basic" />
       </list>
     </recent_temporary>
   </component>
@@ -211,46 +240,6 @@
           <url>file://$PROJECT_DIR$/ldzc78/un used algs/ant_basic.py</url>
           <line>98</line>
           <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
-          <line>242</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
-          <line>36</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
-          <line>187</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
-          <line>301</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/AlgBAdvanced.py</url>
-          <line>287</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_basic.py</url>
-          <line>166</line>
-          <option name="timeStamp" value="159" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/genetic_basic.py</url>
-          <line>131</line>
-          <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ldzc78/failed_particle_swarm_advanced.py</url>
@@ -293,19 +282,49 @@
           <option name="timeStamp" value="276" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/LinKernighan.py</url>
-          <line>318</line>
-          <option name="timeStamp" value="283" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ldzc78/LinKernighan.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="346" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ldzc78/LinKernighan_advanced.py</url>
           <line>354</line>
           <option name="timeStamp" value="352" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>317</line>
+          <option name="timeStamp" value="364" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>309</line>
+          <option name="timeStamp" value="365" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>278</line>
+          <option name="timeStamp" value="366" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="367" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>251</line>
+          <option name="timeStamp" value="368" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>253</line>
+          <option name="timeStamp" value="369" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/genetic_advanced.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="374" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ldzc78/AlgBBasic.py</url>
+          <line>461</line>
+          <option name="timeStamp" value="375" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
