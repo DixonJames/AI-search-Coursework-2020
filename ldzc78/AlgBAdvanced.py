@@ -152,7 +152,7 @@ def read_in_algorithm_codes_and_tariffs(alg_codes_file):
 ############ THE CITY FILE IS IN THE FOLDER 'city-files'.
 ############
 
-input_file = "AISearchfile535.txt"
+input_file = "AISearchfile180.txt"
 
 ############
 ############ PLEASE SCROLL DOWN UNTIL THE NEXT BLOCK OF CAPITALIZED COMMENTS.
@@ -314,8 +314,7 @@ def two_opt_mutation(tour, distances):
 
 
         new = front_section + [B_city] + mid_section + [A_n_city] + tail_section
-        if len(set(new)) != len(tour):
-            print("s")
+
 
         tour = front_section + [B_city] + mid_section + [A_n_city] + tail_section
 
@@ -385,7 +384,6 @@ def findMissing(original, trial):
 
 def basicCrossoverTours(A_tour, B_tour):
     if len(A_tour) != len(B_tour):
-        print("tours not of same length")
         return False
 
     division_index = random.randint(0, len(A_tour)-1)
@@ -465,8 +463,7 @@ def shift_change_mutation(tour):
 
     new = prefix + [tour[B_i]] + middle + [tour[A_i]] + postfix
 
-    if len(set(new)) != len(set(tour)):
-        print("shit")
+
 
     return new
 
@@ -551,7 +548,7 @@ def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsi
     while(time.time() - start_time +  tour_time_taken < time_frame):
         start_gen_time = time.time()
         #looping over each generation
-        #print(f"{time.time() - start_time}/{time_frame}")
+
 
         population_fitness = [tourFitness(t, map_of_distances) for t in population]
         total_fitness = sum(population_fitness)
@@ -584,15 +581,15 @@ def runTraining(time_frame,map_of_distances,  mutation_chance, opt_chance, popsi
                 #new_pop.append(parents[1])
 
         population = applyMutations(new_pop, mutation_chance, opt_chance, map_of_distances)
-        #print(population)
+
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
         population.append(top_tour)
-        #print(top_fitness)
+
 
         tour_time_taken = time.time() - start_gen_time
 
-    print(tour_time_taken, time.time() - start_time +  tour_time_taken)
+    #print(tour_time_taken, time.time() - start_time +  tour_time_taken)
     return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):

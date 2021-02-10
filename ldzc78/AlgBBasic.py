@@ -334,7 +334,6 @@ def findMissing(original, trial):
 
 def basicCrossoverTours(A_tour, B_tour):
     if len(A_tour) != len(B_tour):
-        print("tours not of same length")
         return False
 
     division_index = random.randint(0, len(A_tour)-1)
@@ -418,9 +417,7 @@ def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
 
     while (time.time() - start_time + tour_time_taken < time_frame):
         start_gen_time = time.time()
-    #while (c_gen < time_frame):
-        #looping over each generation
-        #print(f"{time.time() - start_time}/{time_frame}")
+
 
         population_fitness = [tourFitness(t, map_of_distances) for t in population]
         total_fitness = sum(population_fitness)
@@ -442,7 +439,7 @@ def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
                 new_pop.append(childB)
 
         population = applyMutations(new_pop, mutation_chance)
-        #print(population)
+
 
         top_fitness, top_tour = testPopulation(population, top_fitness, top_tour, map_of_distances)
 
@@ -450,7 +447,7 @@ def runTraining(time_frame, map_of_distances,  mutation_chance, popsize):
 
         tour_time_taken = time.time() - start_gen_time
 
-
+    #print(tour_time_taken, time.time() - start_time + tour_time_taken)
     return top_tour, tourFitness(top_tour, map_of_distances)
 
 def main(map):
