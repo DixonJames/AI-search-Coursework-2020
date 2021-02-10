@@ -165,8 +165,7 @@ class Improvement:
 
         self.k_opt = 2
 
-        self.added = set()
-        self.removed = set()
+
 
     def setWeightLost(self, custom_add=None, custom_rem=None):
         """
@@ -224,7 +223,7 @@ class Improvement:
             test_add = (head_removal_city, original_city)
 
 
-            if head_removal_city != original_city and not(test_rem in self.added) and not((test_rem[1], test_rem[0]) in self.added):
+            if head_removal_city != original_city:
 
                 temp_removal_edges = self.remove_edges.copy()
                 temp_removal_edges.update({test_rem})
@@ -239,7 +238,7 @@ class Improvement:
                         self.input_tour.tour = createCycle(trial_tour)
                         return True
                     else:
-                        self.remove_edges.add(test_rem)
+
                         return self.addEdge(original_city, tail_removal_city, head_removal_city)
         return False
 
@@ -250,7 +249,7 @@ class Improvement:
 
             trial_edge_b = (trial_add_city, head)
             trial_edge_f = (head, trial_add_city)
-            if trial_add_city != tail and not(trial_edge_f  in self.input_tour.edgesSet()) and not(trial_edge_b  in self.input_tour.edgesSet()) and not(trial_edge_f  in self.removed) and not(trial_edge_b  in self.removed):
+            if trial_add_city != tail and not(trial_edge_f  in self.input_tour.edgesSet()) and not(trial_edge_b  in self.input_tour.edgesSet()) :
 
                 temp_removal_edges = self.remove_edges.copy()
 
@@ -318,8 +317,8 @@ def main(weights):
 
     elapsed_time = time.time() - start_time
 
-    added = set()
-    removed = set()
+
+
 
     last_res = 0
 
@@ -332,42 +331,35 @@ def main(weights):
         #set up tour and inprovemtn object
         old_tour = Tour(weights, current_tour)
         inproved_tour = Improvement(old_tour)
-        inproved_tour.added = added
-        inproved_tour.removed = removed
+
+
 
         #seach for a better tour
 
 
         #if a better one found, repeite
         continue_search = inproved_tour.LKinprovemnt()
-        added.update(inproved_tour.added)
-        removed.update(inproved_tour.removed)
-        if continue_search == False:
-            added = set()
-            removed = set()
 
-            #if we run out of edges, have what we got as the starting tour and begin again
-            continue_search = True
+
+
         if(time.time() - start_time > time_frame):
             continue_search = False
 
 
 
         current_tour = old_tour.tour
-        #inprovement that if get same result twice, end it
-        if tourFitness(current_tour, weights) == last_res:
-            continue_search  = False
 
 
 
-        print((inproved_tour.k_opt), tourFitness(current_tour, weights))
+
+        #print((inproved_tour.k_opt), tourFitness(current_tour, weights))
         last_res = tourFitness(current_tour, weights)
 
         if(time.time() - starting_imp_time > largest_inp_time):
             largest_inp_time = time.time() - starting_imp_time
 
     #print(time.time() - start_time )
-    print(largest_inp_time)
+    #print(largest_inp_time)
     return old_tour.tour, tourFitness(old_tour.tour, weights)
 
 

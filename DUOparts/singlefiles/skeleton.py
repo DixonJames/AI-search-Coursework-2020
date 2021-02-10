@@ -11,7 +11,7 @@
 import os
 import sys
 import time
-import random
+
 
 ############
 ############ NOW PLEASE SCROLL DOWN UNTIL THE NEXT BLOCK OF CAPITALIZED COMMENTS.
@@ -275,8 +275,7 @@ added_note = ""
 ############
 
 
-
-from ldzc78 import AlgABasic as AI_search_Alg
+from submit.ldzc78 import AlgAbasic as AI_search_Alg
 
 tour, tour_length = AI_search_Alg.main(dist_matrix)
 

@@ -152,7 +152,7 @@ def read_in_algorithm_codes_and_tariffs(alg_codes_file):
 ############ THE CITY FILE IS IN THE FOLDER 'city-files'.
 ############
 
-input_file = "AISearchfile180.txt"
+input_file = "AISearchfile012.txt"
 
 ############
 ############ PLEASE SCROLL DOWN UNTIL THE NEXT BLOCK OF CAPITALIZED COMMENTS.
@@ -278,10 +278,10 @@ print("   your algorithm code is legal and is " + algorithm_code + " -" + code_d
 
 added_note = ""
 
+
 ############
 ############ NOW YOUR CODE SHOULD BEGIN.
 ############
-
 
 
 def tourFitness(candidate_tour, weights):
@@ -629,7 +629,7 @@ def main(weights):
 
             #if we run out of edges, have what we got as the starting tour and begin again
             continue_search = True
-        if(time.time() - start_time +largest_inp_time > time_frame):
+        if(time.time() - start_time + largest_inp_time > time_frame):
             continue_search = False
 
 
@@ -727,11 +727,6 @@ for i in range(1, num_cities):
 f.write(",\nNOTE = " + added_note)
 f.close()
 print("I have successfully written your tour to the tour file:\n   " + output_file_name + ".")
-
-
-
-
-
 
 
 
